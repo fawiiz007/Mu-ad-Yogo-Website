@@ -3,10 +3,10 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import logo from "./logo copy.png";
-import item_one from "./1.png";
-import item_two from "./2.png";
-import item_three from "./3.png";
-import item_four from "./4.png";
+import item_one from "./image_one.png";
+import item_two from "./image_two.png";
+import item_three from "./image_three.png";
+import item_four from "./image_four.png";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 
