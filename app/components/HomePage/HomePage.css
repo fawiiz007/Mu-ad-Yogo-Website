@@ -1,0 +1,221 @@
+
+/* ── HOMEPAGE WRAPPER ───────────────────────────────────────────────── */
+.homepage {
+  opacity: 0;
+  width: 100%;
+  min-height: 100svh;
+}
+
+/* ── HERO SECTION ───────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── BACKGROUND IMAGE PLACEHOLDER ──────────────────────────────────── */
+/*
+  Drop your hero image here.
+
+  Option A — CSS background (simplest):
+    Change the `background` property below to:
+      background: url('/your-image.jpg') center / cover no-repeat;
+
+  Option B — Next.js <Image fill> (recommended for performance):
+    Remove .hero-bg-placeholder from the JSX and render:
+      <Image src={yourImg} alt="" fill priority style={{ objectFit: 'cover' }} />
+    The .hero-bg-img class is ready for that.
+*/
+.hero-bg-placeholder {
+  position: absolute;
+  inset: 0;
+  background: #323653; /* fallback colour while no image is placed */
+}
+
+.hero-bg-img {
+  object-fit: cover;
+}
+
+/* ── NAVIGATION ─────────────────────────────────────────────────────── */
+.hero-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 6vw, 7rem);
+  padding: clamp(1.2rem, 2.5vw, 2rem) 2rem;
+}
+
+.nav-link {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: none;
+  opacity: 0; /* animated in by GSAP */
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #ffd1fc;
+}
+
+.nav-logo {
+  width: clamp(90px, 10vw, 140px);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── HERO CONTENT ───────────────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  gap: 1.6rem;
+  margin-top: -3rem;
+}
+
+/* ── HEADLINE ───────────────────────────────────────────────────────── */
+.hero-headline {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.8rem, 7vw, 7.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.hero-headline-pink {
+  font-style: italic;
+  color: #ffd1fc;
+}
+
+/* ── SUBTEXT ────────────────────────────────────────────────────────── */
+.hero-sub {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+  text-transform: none;
+  line-height: 1.6;
+  max-width: 520px;
+  opacity: 0; /* animated in by GSAP */
+}
+
+/* ── CTA BUTTONS ────────────────────────────────────────────────────── */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-btn {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 2.2rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  opacity: 0; /* animated in by GSAP */
+  white-space: nowrap;
+}
+
+.hero-btn-filled {
+  background: #ACC8FF;
+  backdrop-filter: blur(6px);
+  color: #323653;
+}
+
+.hero-btn-filled:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.hero-btn-outline {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.hero-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── WAVE ───────────────────────────────────────────────────────────── */
+.hero-wave {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: clamp(80px, 12vw, 160px);
+  display: block;
+}
+
+/* ── MOBILE ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-nav {
+    justify-content: flex-start;
+    gap: 0;
+    padding: 1.2rem;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .nav-logo {
+    width: clamp(70px, 22vw, 100px);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-btn {
+    width: min(280px, 85vw);
+    text-align: center;
+  }
+
+  .hero-content {
+    margin-top: 0;
+    padding: 0 1.5rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    line-height: 1.1;
+  }
+}

@@ -1,0 +1,196 @@
+/* ── Order summary ─────────────────────────────────────────────────────── */
+
+.order-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.order-empty-emoji {
+  font-size: 2.25rem;
+}
+
+.order-empty-title {
+  font-size: 0.875rem;
+  font-family: "Instrument Sans", sans-serif;
+  color: var(--navy);
+}
+
+.order-empty-subtitle {
+  font-size: 0.75rem;
+  font-family: "Instrument Sans", sans-serif;
+  color: #9ca3af;
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+  font-family: "Instrument Sans", sans-serif;
+  gap: 16px;
+}
+
+.order-line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 12px;
+  padding: 12px;
+  background: #f1f5ff;
+}
+
+.order-line-image {
+  position: relative;
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  overflow: show;
+}
+
+.order-line-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.order-line-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1c1c1c;
+}
+
+.order-line-selections {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 4px;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.order-line-unit-price {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.order-line-controls {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-line-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 9999px;
+  padding: 0 4px;
+  background: #e4ebfb;
+}
+
+.order-line-stepper-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.order-line-stepper-btn:hover {
+  background: #ffffff;
+}
+
+.order-line-qty {
+  width: 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.order-line-remove {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+.order-line-remove:hover {
+  text-decoration: underline;
+}
+
+.order-line-total {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.order-totals {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #edf1fb;
+  padding-top: 16px;
+}
+
+.order-totals-count {
+  font-size: 0.875rem;
+  font-family: "Instrument Sans", sans-serif;
+  color: #6b7280;
+}
+
+.order-totals-price {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.order-whatsapp-btn {
+  margin-top: 20px;
+  background-color: #323653;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.order-whatsapp-btn:hover {
+  opacity: 0.9;
+}
+
+.order-whatsapp-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

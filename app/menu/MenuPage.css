@@ -1,0 +1,300 @@
+/* ── MENU SECTION ───────────────────────────────────────────────────── */
+.menu-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────────── */
+.menu-header {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.menu-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  color: #1b1f3a;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  text-transform: none;
+}
+
+.menu-subtitle {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-weight: 400;
+  font-style: normal;
+  color: #555770;
+  text-transform: none;
+  line-height: 1.5;
+}
+
+/* ── GRID ───────────────────────────────────────────────────────────── */
+.menu-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2.5rem, 2vw, 4.5rem);
+  max-width: 1000px;
+}
+
+/* ── CARD ───────────────────────────────────────────────────────────── */
+.menu-card {
+  background: #eaecf5;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+/* ── CARD IMAGE AREA ────────────────────────────────────────────────── */
+.menu-card-image-wrap {
+  width: 100%;
+  height: clamp(380px, 22vw, 580px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: clamp(1.2rem, 2vw, 2rem);
+  overflow: visible;
+}
+
+.menu-card-image {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 65%;
+  object-fit: contain !important;
+  display: block;
+  /* Subtle drop shadow so image floats above the card */
+  filter: drop-shadow(0 8px 20px rgba(50, 54, 83, 0.18));
+}
+
+/* ── CARD BODY ──────────────────────────────────────────────────────── */
+.menu-card-body {
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem) clamp(1.2rem, 2vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.35rem;
+}
+
+.menu-card-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  font-style: normal;
+  color: #1b1f3a;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: 0.1rem;
+}
+
+.menu-card-price {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.72rem, 1vw, 0.82rem);
+  font-weight: 400;
+  color: #1b1f3a;
+  text-transform: none;
+}
+
+/* ── PRICE / QUANTITY ROW ──────────────────────────────────────────────
+   Row that holds price + the quantity stepper side by side. Styled to
+   match the cart modal's stepper exactly (.order-line-stepper). */
+.menu-card-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0.6rem;
+}
+
+.menu-card-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 9999px;
+  padding: 0 4px;
+  background: #e4ebfb;
+}
+
+.menu-card-stepper-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #323653;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.menu-card-stepper-btn:hover {
+  background: #ffffff;
+}
+
+.menu-card-qty {
+  width: 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #323653;
+}
+
+/* ── FIELDS ─────────────────────────────────────────────────────────── */
+.menu-card-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+}
+
+.menu-card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menu-card-field-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.65rem, 0.85vw, 0.75rem);
+  color: #1b1f3a;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.menu-card-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+ 
+.menu-card-chip {
+  border: 1.5px solid #d9e2f5;
+  background: #ffffff;
+  color: #323653;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+ 
+.menu-card-chip:hover {
+  border-color: #a8c0fe;
+}
+ 
+.menu-card-chip--selected {
+  background: #a8c0fe;
+  border-color: #323653;
+  color: #323653;
+}
+
+/* ── CUSTOM SELECT ──────────────────────────────────────────────────── */
+.menu-card-select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.menu-card-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #ffffff;
+  border: 1px solid #d0d3e8;
+  border-radius: 9px;
+  padding: 1rem 2.2rem 1rem 0.7rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(0.85rem, 0.9vw, 1rem);
+  color: #1b1f3a;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.menu-card-select:focus {
+  border-color: #323653;
+}
+
+.menu-card-chevron {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* ── ADD TO ORDER BUTTON ────────────────────────────────────────────── */
+.menu-card-btn {
+  margin-top: auto;
+  width: 100%;
+  background: #323653;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 1.15rem 1.5rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.22s;
+}
+
+.menu-card-btn:hover {
+  background: #1b1f3a;
+}
+
+/* ── MOBILE ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .menu-section {
+    padding: 35px;
+  }
+
+  .menu-title {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(3rem, 2vw, 5.5rem);
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* Was clamp(160px, 45vw, 220px) — too small, images barely registered.
+     Bumped up so product images actually read clearly on phones. */
+  .menu-card-image-wrap {
+    height: clamp(260px, 65vw, 360px);
+  }
+
+  /* Was 65% (inherited from desktop) — let the image use most of the
+     wider mobile wrap instead of floating tiny in the middle. */
+  .menu-card-image {
+    max-width: 85%;
+  }
+
+  .menu-card-chip {
+    font-size: 0.7em;
+    font-weight: 400;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+}

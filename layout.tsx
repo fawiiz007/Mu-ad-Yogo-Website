@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { CartProvider } from "./context/CartContext";
-import CartModal from "./components/CartModal/CartModal";
+import CartDrawer from "./components/CartDrawer";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <CartProvider>
           {children}
-          <CartModal />
+          <CartDrawer />
         </CartProvider>
       </body>
     </html>

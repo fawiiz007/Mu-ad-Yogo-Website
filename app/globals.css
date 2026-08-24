@@ -1,52 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Instrument+Serif:ital@0;1&display=swap');
+/* Fonts loaded via next/font/google in layout.tsx — see --font-sans and --font-serif variables */
 
+/* ── DESIGN TOKENS ──────────────────────────────────────────────────── */
 :root {
-  --base-100: #ffff;
+  --base-100: #ffffff;
   --base-200: #a8c0fe;
   --base-300: #ffd1fc;
   --base-400: #ffffff;
   --base-500: #323653;
+  --pink:     #e879a0;
 }
 
-* {
+/* ── RESET ──────────────────────────────────────────────────────────── */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1, a, p {
-  color: var(--base-100);
-  text-transform: uppercase;
-  line-height: 0.85;
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #fff;
 }
 
-h1 {
-  font-family: "Barlow Condensed";
-  font-size: clamp(3rem, 6vw, 9rem);
-  font-weight: 800;
-}
-
-a {
-  font-family: "Barlow Condensed";
-  font-weight: 600;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-p {
-  font-family: "Instrument Serif";
-  font-weight: 500;
-}
-
+/* ── PRELOADER ──────────────────────────────────────────────────────── */
 .preloader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100svh;
-  color: var(--base-100);
   overflow: hidden;
-  z-index: 2;
+  z-index: 100;
 }
 
 .preloader-bg,
@@ -62,16 +47,12 @@ p {
   will-change: clip-path;
 }
 
-.preloader-bg {
-  background-color: var(--base-500);
-}
+.preloader-bg          { background-color: var(--base-500); }
+.preloader-revealer-1  { background-color: var(--base-200); }
+.preloader-revealer-2  { background-color: var(--base-300); }
+.preloader-revealer-3  { background-color: var(--base-400); }
+.preloader-revealer-4  { background-color: var(--base-500); }
 
-.preloader-revealer-1 { background-color: var(--base-200); }
-.preloader-revealer-2 { background-color: var(--base-300); }
-.preloader-revealer-3 { background-color: var(--base-400); }
-.preloader-revealer-4 { background-color: var(--base-500); }
-
-/* ONE consolidated rule — no more duplicate/conflicting block */
 .preloader-logo {
   position: absolute;
   top: 50%;
@@ -83,7 +64,6 @@ p {
   overflow: hidden;
   opacity: 0;
   z-index: 5;
-  color: var(--base-100);
   will-change: transform, opacity;
 }
 
@@ -117,10 +97,6 @@ p {
   display: block;
 }
 
-/* Tighten travel distances on small screens so items don't
-   fly off-canvas or overlap awkwardly on portrait phones */
 @media (max-width: 480px) {
-  .item {
-    width: clamp(70px, 22vw, 130px);
-  }
+  .item { width: clamp(70px, 22vw, 130px); }
 }
