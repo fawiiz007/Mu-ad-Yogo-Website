@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { CartProvider } from "./context/CartContext";
-import CartModal from "./components/CartModal/CartModal";
-import "./globals.css";
+import CartModal from "@/app/components/CartModal/CartModal";
+import "@/app/globals.css";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
