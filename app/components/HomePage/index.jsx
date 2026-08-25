@@ -1,12 +1,23 @@
 import Image from "next/image";
 import logo from "../../logo copy.png";
 import background_image from "../../background.jpg";
+import { business } from "@/data/business";
 import "./HomePage.css";
+
+// Generic greeting for the hero's WhatsApp button — this isn't tied to a
+// cart order (that flow lives in the cart modal), it's just a fast way to
+// start a conversation before someone has picked anything from the menu.
+const WHATSAPP_GREETING = "Hello Mu'ad Yogo! I'd like to place an order.";
+
+function buildWhatsAppHref() {
+  const digitsOnly = business.whatsappNumber.replace(/\D/g, "");
+  return `https://wa.me/${digitsOnly}?text=${encodeURIComponent(WHATSAPP_GREETING)}`;
+}
 
 export default function HomePage() {
   return (
     <div className="homepage">
-      <section className="hero">
+      <section className="hero" id="home">
         <Image
           src={background_image}
           alt=""
@@ -18,26 +29,12 @@ export default function HomePage() {
         {/* Dark overlay */}
         <div className="hero-overlay" />
 
-        {/* ── NAV ─────────────────────────────────────────────────────── */}
-        <nav className="hero-nav">
-          <a href="#" className="nav-link">
-            Home
-          </a>
-          <a href="#" className="nav-link">
-            Menu
-          </a>
-
-          <div className="nav-logo">
-            <Image src={logo} alt="Mu'ad Yogo" />
+        {/* ── HERO LOGO ────────────────────────────────────────────────── */}
+        <header className="hero-header">
+          <div className="hero-logo">
+            <Image src={logo} alt="Mu'ad Yogo" priority />
           </div>
-
-          <a href="#" className="nav-link">
-            About
-          </a>
-          <a href="#" className="nav-link">
-            Contact
-          </a>
-        </nav>
+        </header>
 
         {/* ── CONTENT ─────────────────────────────────────────────────── */}
         <div className="hero-content">
@@ -51,10 +48,15 @@ export default function HomePage() {
           </p>
 
           <div className="hero-actions">
-            <a href="#" className="hero-btn hero-btn-filled">
+            <a href="#menu" className="hero-btn hero-btn-filled">
               Explore Menu
             </a>
-            <a href="#" className="hero-btn hero-btn-outline">
+            <a
+              href={buildWhatsAppHref()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-btn hero-btn-outline"
+            >
               Order on WhatsApp
             </a>
           </div>

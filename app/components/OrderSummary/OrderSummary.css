@@ -48,7 +48,9 @@
   width: 90px;
   height: 90px;
   border-radius: 10px;
-  overflow: show;
+  filter: drop-shadow(0 8px 20px rgba(50, 54, 83, 0.18));
+  padding: 4px;
+  overflow: hidden;
 }
 
 .order-line-main {
@@ -180,7 +182,6 @@
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: #ffffff;
   cursor: pointer;
   transition: opacity 0.15s ease;

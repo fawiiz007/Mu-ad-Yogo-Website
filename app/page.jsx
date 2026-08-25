@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import HomePage from "./components/HomePage";
 import MenuPage from "./menu/index";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(SplitText);
 
@@ -60,19 +61,6 @@ export default function Home() {
           "<",
         );
 
-        tl.fromTo(
-          ".nav-link",
-          { opacity: 0, y: -16 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.08,
-            ease: "power2.out",
-          },
-          "<0.1",
-        );
-
         const heroSplit = new SplitText(".hero-headline", { type: "words" });
         tl.fromTo(
           heroSplit.words,
@@ -119,6 +107,9 @@ export default function Home() {
 
       {/* ── MENU ──────────────────────────────────────────────────────── */}
       <MenuPage />
+
+      {/* ── FOOTER ────────────────────────────────────────────────────── */}
+      <Footer />
     </>
   );
 }

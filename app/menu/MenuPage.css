@@ -38,9 +38,8 @@
 .menu-grid {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(2.5rem, 2vw, 4.5rem);
-  max-width: 1000px;
 }
 
 /* ── CARD ───────────────────────────────────────────────────────────── */
@@ -117,14 +116,16 @@
 .menu-card-stepper {
   display: flex;
   align-items: center;
+  font-family: "Instrument Sans", sans-serif;
   gap: 4px;
-  border-radius: 9999px;
+  border-radius: 9px;
   padding: 0 4px;
-  background: #e4ebfb;
+  background: #cddeff;
 }
 
 .menu-card-stepper-btn {
   display: flex;
+  font-family: "Instrument Sans", sans-serif;
   align-items: center;
   justify-content: center;
   width: 24px;
@@ -172,6 +173,16 @@
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0.01em;
+}
+
+.correction-warning{
+  color: red;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1.5;
 }
 
 .menu-card-chip-group {

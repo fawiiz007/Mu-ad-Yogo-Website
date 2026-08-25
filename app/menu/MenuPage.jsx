@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import item_one from "../../image_one.png";
-import item_two from "../../image_two.png";
-import item_three from "../../image_three.png";
-import item_four from "../../image_four.png";
-import parfait_ice_cream from "../../parfait ice cream.png";
+import straberry_yogurt from "../../app/strawberry_yogurt.png";
+import vanilla_yogurt from "../../app/vanilla.png";
+import sweetened_yogurt from "../../app/sweetened.png";
+import parfait from "../../app/parfait.png";
+import plain_yogurt from "../../app/plain yogurt.png";
+import parfait_ice_cream from "../../app/parfait ice cream.png";
+import parfait_ice_cream_with_fruits from "../../app/parfait icecream with fruits.png";
 import { useCart } from "../context/CartContext";
 import "./MenuPage.css";
 
@@ -20,17 +22,17 @@ const products = [
   {
     id: "yogurt",
     name: "YOGURT",
-    image: item_four,
+    image: plain_yogurt,
     fields: [
       {
         type: "select",
         label: "Select Flavour",
         affectsImage: true,
         options: [
-          { label: "Vanilla", image: item_four },
-          { label: "Strawberry", image: item_one },
-          { label: "Greek", image: item_two },
-          { label: "Sweetened", image: item_three },
+          { label: "Vanilla", image: vanilla_yogurt },
+          { label: "Strawberry", image: straberry_yogurt },
+          { label: "Greek", image: plain_yogurt },
+          { label: "Sweetened", image: sweetened_yogurt },
         ],
       },
       {
@@ -66,7 +68,7 @@ const products = [
           },
           {
             label: "With Fruits",
-            image: item_two,
+            image: parfait_ice_cream_with_fruits,
             sizes: [
               { label: "330ml", priceNGN: 4500 },
               { label: "500ml", priceNGN: 6500 },
@@ -87,12 +89,19 @@ const products = [
   {
     id: "parfait",
     name: "PARFAIT",
-    image: item_three,
+    image: parfait,
     fields: [
       {
         type: "multi-select",
         label: "Select Fruits",
-        options: ["Strawberry", "Banana", "Grapes", "Kiwi", "Granola", "Blackberries"],
+        options: [
+          "Strawberry",
+          "Banana",
+          "Grapes",
+          "Kiwi",
+          "Granola",
+          "Blackberries",
+        ],
       },
       {
         type: "select",
@@ -105,51 +114,41 @@ const products = [
       },
     ],
   },
-  {
-    id: "chocolate-pop-ice",
-    name: "CHOCOLATE POP ICE",
-    // Confirmed with business: to be added later — not on the active menu yet
-    status: "coming-soon",
-    image: item_four,
-    fields: [
-      {
-        type: "select",
-        label: "Select Flavour",
-        options: [{ label: "Dark Chocolate" }, { label: "Milk Chocolate" }, { label: "White Chocolate" }],
-      },
-      {
-        type: "select",
-        label: "Select Size",
-        options: [{ label: "2 pcs" }, { label: "4 pcs" }, { label: "6 pcs" }],
-      },
-    ],
-  },
 ];
 
 function ProductCard({ product }) {
   const { addItem } = useCart();
   const isComingSoon = product.status === "coming-soon";
 
-  const imageField = product.fields.find((f) => f.type === "select" && f.affectsImage);
+  const imageField = product.fields.find(
+    (f) => f.type === "select" && f.affectsImage,
+  );
   const [activeImage, setActiveImage] = useState(
-    imageField ? imageField.options[0].image : product.image
+    imageField ? imageField.options[0].image : product.image,
   );
 
-  const sizeField = product.fields.find((f) => f.type === "select" && f.label.includes("Size"));
-  const variantField = product.fields.find((f) => f.type === "select" && f !== sizeField);
+  const sizeField = product.fields.find(
+    (f) => f.type === "select" && f.label.includes("Size"),
+  );
+  const variantField = product.fields.find(
+    (f) => f.type === "select" && f !== sizeField,
+  );
 
   const [selectedVariant, setSelectedVariant] = useState(
-    variantField ? variantField.options[0].label : null
+    variantField ? variantField.options[0].label : null,
   );
 
   // If the size field depends on the selected variant (e.g. Parfait Ice
   // Cream's Style), compute its options from the variant; otherwise use the
   // field's own static options.
   const effectiveSizeOptions = sizeField?.dependsOnStyle
-    ? variantField.options.find((o) => o.label === selectedVariant)?.sizes ?? []
-    : sizeField?.options ?? [];
+    ? (variantField.options.find((o) => o.label === selectedVariant)?.sizes ??
+      [])
+    : (sizeField?.options ?? []);
 
-  const [selectedSize, setSelectedSize] = useState(effectiveSizeOptions[0] ?? null);
+  const [selectedSize, setSelectedSize] = useState(
+    effectiveSizeOptions[0] ?? null,
+  );
 
   // When a dependent variant changes, the available sizes change too —
   // reset to the first size of the new list so price never gets stale.
@@ -177,7 +176,9 @@ function ProductCard({ product }) {
   const toggleFruit = (field, fruit) => {
     setMultiSelections((prev) => {
       const current = prev[field.label] || [];
-      const next = current.includes(fruit) ? current.filter((f) => f !== fruit) : [...current, fruit];
+      const next = current.includes(fruit)
+        ? current.filter((f) => f !== fruit)
+        : [...current, fruit];
       return { ...prev, [field.label]: next };
     });
   };
@@ -187,11 +188,17 @@ function ProductCard({ product }) {
 
   // If the product has a multi-select field (e.g. Parfait's fruit picker),
   // require at least one option chosen before an order can be placed.
-  const multiSelectFields = product.fields.filter((f) => f.type === "multi-select");
-  const allFruitSelections = multiSelectFields.flatMap((f) => multiSelections[f.label] || []);
-  const meetsMultiSelectRequirement = multiSelectFields.length === 0 || allFruitSelections.length > 0;
+  const multiSelectFields = product.fields.filter(
+    (f) => f.type === "multi-select",
+  );
+  const allFruitSelections = multiSelectFields.flatMap(
+    (f) => multiSelections[f.label] || [],
+  );
+  const meetsMultiSelectRequirement =
+    multiSelectFields.length === 0 || allFruitSelections.length > 0;
 
-  const canAddToOrder = !isComingSoon && !!selectedSize && meetsMultiSelectRequirement;
+  const canAddToOrder =
+    !isComingSoon && !!selectedSize && meetsMultiSelectRequirement;
 
   const handleAddToOrder = () => {
     if (!canAddToOrder) return;
@@ -224,7 +231,11 @@ function ProductCard({ product }) {
   return (
     <div className="menu-card">
       <div className="menu-card-image-wrap">
-        <Image src={activeImage} alt={product.name} className="menu-card-image" />
+        <Image
+          src={activeImage}
+          alt={product.name}
+          className="menu-card-image"
+        />
       </div>
 
       <div className="menu-card-body">
@@ -232,7 +243,11 @@ function ProductCard({ product }) {
 
         <div className="menu-card-price-row">
           <p className="menu-card-price">
-            {isComingSoon ? "Coming Soon" : selectedSize ? formatNaira(unitPrice) : "Select a size"}
+            {isComingSoon
+              ? "Coming Soon"
+              : selectedSize
+                ? formatNaira(unitPrice)
+                : "Select a size"}
           </p>
 
           {!isComingSoon && (
@@ -283,7 +298,9 @@ function ProductCard({ product }) {
                     })}
                   </div>
                   {selected.length === 0 && (
-                    <p className="mt-1 text-xs text-red-500">Select at least 1 fruit</p>
+                    <p className="correction-warning">
+                      Select at least 1 fruit
+                    </p>
                   )}
                 </div>
               );
@@ -291,7 +308,10 @@ function ProductCard({ product }) {
 
             // Size field on a dependent product renders from effectiveSizeOptions,
             // recomputed whenever the linked Style changes.
-            const options = field === sizeField && field.dependsOnStyle ? effectiveSizeOptions : field.options;
+            const options =
+              field === sizeField && field.dependsOnStyle
+                ? effectiveSizeOptions
+                : field.options;
             const defaultLabel = options[0]?.label;
 
             return (
@@ -300,8 +320,14 @@ function ProductCard({ product }) {
                 <div className="menu-card-select-wrap">
                   <select
                     className="menu-card-select"
-                    value={field === sizeField ? selectedSize?.label ?? "" : undefined}
-                    defaultValue={field === sizeField ? undefined : defaultLabel}
+                    value={
+                      field === sizeField
+                        ? (selectedSize?.label ?? "")
+                        : undefined
+                    }
+                    defaultValue={
+                      field === sizeField ? undefined : defaultLabel
+                    }
                     aria-label={field.label}
                     disabled={isComingSoon}
                     onChange={(e) => handleSelect(field, e.target.value)}
@@ -313,7 +339,12 @@ function ProductCard({ product }) {
                       </option>
                     ))}
                   </select>
-                  <svg className="menu-card-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    className="menu-card-chevron"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M5 7.5L10 12.5L15 7.5"
                       stroke="#323653"
@@ -332,7 +363,9 @@ function ProductCard({ product }) {
           className="menu-card-btn"
           type="button"
           disabled={!canAddToOrder}
-          style={!canAddToOrder ? { opacity: 0.5, cursor: "not-allowed" } : undefined}
+          style={
+            !canAddToOrder ? { opacity: 0.5, cursor: "not-allowed" } : undefined
+          }
           onClick={handleAddToOrder}
         >
           {isComingSoon ? "COMING SOON" : "ADD TO ORDER"}
@@ -348,7 +381,8 @@ export default function MenuPage() {
       <div className="menu-header">
         <h2 className="menu-title">Our Signature Collection</h2>
         <p className="menu-subtitle">
-          Crafted with the finest ingredients for an unforgettable taste experience.
+          Crafted with the finest ingredients for an unforgettable taste
+          experience.
         </p>
       </div>
 

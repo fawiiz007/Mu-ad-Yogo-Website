@@ -54,8 +54,8 @@ export default function OrderSummary() {
                   src={line.image}
                   alt={line.name}
                   fill
-                  sizes="56px"
-                  style={{ objectFit: "cover" }}
+                  sizes="90px"
+                  style={{ objectFit: "contain" }}
                 />
               </div>
             )}
