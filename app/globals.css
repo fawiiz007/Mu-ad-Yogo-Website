@@ -23,6 +23,19 @@ html, body {
   background: #fff;
 }
 
+/* ── ACCESSIBILITY FOCUS STATES (SRS NFR-04) ───────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--base-200);
+  outline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--base-200);
+  outline-offset: 2px;
+}
+
 /* ── PRELOADER ──────────────────────────────────────────────────────── */
 .preloader {
   position: fixed;

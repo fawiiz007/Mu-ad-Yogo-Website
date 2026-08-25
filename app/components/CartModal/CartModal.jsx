@@ -11,11 +11,22 @@ export default function CartModal() {
   const { totalQuantity } = useCart();
   const prevQuantity = useRef(totalQuantity);
 
-  // Lock background scroll while the modal is open
+  // Lock background scroll and listen for Escape key while modal is open
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
