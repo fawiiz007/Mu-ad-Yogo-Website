@@ -272,7 +272,7 @@
 }
 
 /* ── MOBILE ─────────────────────────────────────────────────────────── */
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .menu-section {
     padding: 35px;
   }
