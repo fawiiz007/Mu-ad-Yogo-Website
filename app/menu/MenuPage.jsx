@@ -62,7 +62,7 @@ const products = [
             label: "Without Fruits",
             image: parfait_ice_cream,
             sizes: [
-              { label: "330ml", priceNGN: 3000 },
+              { label: "330ml", priceNGN: 3500 },
               { label: "500ml", priceNGN: 5000 },
             ],
           },
